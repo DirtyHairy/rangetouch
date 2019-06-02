@@ -57,11 +57,11 @@ class RangeTouch {
             targets = target.filter(is.element);
         }
 
-        if (is.empty(targets)) {
+        const config = Object.assign({}, defaults, options);
+
+        if (is.empty(targets) && !config.watch) {
             return null;
         }
-
-        const config = Object.assign({}, defaults, options);
 
         if (is.string(target) && config.watch) {
             // Create an observer instance
